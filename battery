@@ -75,7 +75,7 @@ battery_charge() {
         "Linux")
             upower -i $(upower -e | grep BAT) | \
             grep "state:" | grep -o 'discharging\|charging' | \
-            (read string; if [ $string == 'charging' ]; then export connected=0; else export connected=1; fi)
+            (read string; if [ '$string' == 'charging' ]; then export connected=0; else export connected=1; fi)
             printf "%d" $(upower -i $(upower -e | grep BAT) | grep "percentage:" | grep -o '[0-9]*%' | tr -d '%')
 
             ;;
